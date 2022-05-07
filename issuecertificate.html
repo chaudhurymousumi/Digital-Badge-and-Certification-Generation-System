@@ -1,0 +1,172 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="NotCredly">
+    <title>Account-Confirmation </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        section{
+          padding: 60px 0; 
+        }
+    </style>
+</head>
+
+<body>
+
+<!--navbar-->
+<nav class="navbar navbar-expand-md fw-bold navbar-dark bg-primary">
+    <div class="container-xxl">
+       <a href="#intro" class="navbar-brand">
+            <span class="fw-bold text-sucess-secondary">
+            NotCredly - The Certificate & Badge Generator 
+            </span> 
+                    
+        </a>
+
+ <!--toggle button for mobile nav--> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
+
+ <!--navbar links-->  
+        <div class="collapse navbar-collapse justify-content-end align-centre" id="main-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/viewevent">View Event</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/signout">Sign Out</a>
+                </li>
+            </ul> 
+        </div>    
+</nav>
+      
+{% for message in messages %}
+    <div class="alert alert- {{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{ message }}
+            <button type = "button" class = "close" data-dismiss = "alert" aria-label = "close">
+                <span aria-hidden ="true">&times;</span>
+            </button> 
+    </div>    
+{% endfor %}
+
+
+{% if user.is_authenticated %}
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-start">  
+                <h3>
+                    <div class="text-success"> Hello {{firstname}} </div>
+                </h3>
+            </div>
+        </div>
+    </div>    
+{% endif %}  
+
+<!--main image & intro text-->
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-start">
+
+                <img class="img-fluid" src="/static/NotCredly-logo.png" alt="NotCredly-logo">
+
+                <h2>
+                    <div class="display-7"> Respected Brands. Resume-worthy Achievements.</div> 
+                </h2>    
+                <p class="display-9 text-muted">NotCredly is used by individuals and organizations for veriying achievements to unlock opportunities. 
+                </p> 
+
+                <img class="img-fluid" src="/static/certificate-maker.png" alt="certificate-maker">
+
+            </div>
+
+            <div class="col-md-5">
+                <div class="text-center">
+                    <h3>
+                        <div class="display-7"> Generate Certificate.
+                    </h3>
+                </div>
+
+                <form method="post" action="">
+                {% csrf_token %}
+
+                                                         
+                    <div class="form-group mb-4">
+					    <label for="">Select Column for Name:</label>
+					    <select class="form-control" id=" " name="name_col" required>
+
+					        <option selected>Choose...</option>
+					        {% for column in columns %}
+					        <option value="{{column}}">{{column}}</option>
+					        {% endfor %}
+
+					    </select>
+				    </div>
+
+                    <label for="">Select Column for Email:</label>
+                    <div class="form-group mb-4">
+                        <select class="form-control" id=" " name="email_col" required>
+
+					    <option selected>Choose...</option>
+					    {% for column in columns %}
+					    <option value="{{column}}">{{column}}</option>
+					    {% endfor %}
+					    </select>
+                    </div>
+
+                    <label for="">Select Column for Organization:</label>
+                    <div class="form-group mb-4">
+                        <select class="form-control" id=" " name="org_col" required>
+
+					        <option selected>Choose...</option>
+					        {% for column in columns %}
+					        <option value="{{column}}">{{column}}</option>
+					        {% endfor %}
+					    </select>
+                    </div>
+
+                    <label for="">Certificate ID:</label>
+                    <div class="input-group mb-4">
+                        <input class="form-control" id=" " name="sno_col" required>
+                    </div>  
+                    <div class="row">           
+			            <div class="col-md-1"></div>
+			                <div class="col-md-12">
+				                <div class="form-group">
+				                    <label for="exampleFormControlTextarea1">Message of Email</label>
+				                    <textarea class="form-control" name="mess" rows="3"></textarea>
+				                </div>
+				                <br/>
+				                <button type="submit" class="btn btn-info w-100" onclick="this.innerText='Generating and Sending Certificates....'">Generate and Send Certificates</button>
+			                </div>
+			            </div>
+		            </div>
+                    <p>
+                    <div class="row">
+	                    <div class="col-md-4">
+
+	                    </div>
+	                    <div class="col-md-12">
+		                    <div class="alert alert-success" role="alert">
+		                    <div class="alert alert-success" role="alert">
+			                    Generating and Sending process of certificate usually take some time, Please have some patience and <b>do not refresh the page</b>
+			                </div>                 
+                        </div>
+                    </div> 
+                </form>    
+            </div>
+        </div>     
+    </div>    
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+
+</body>
+
+</html>

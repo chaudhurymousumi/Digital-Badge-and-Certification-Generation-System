@@ -1,0 +1,175 @@
+<!--Mousumi-->
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="NotCredly">
+    <title>Certificate Generator - Website </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        section{
+          padding: 60px 0; 
+        }
+    </style>
+</head>
+
+<body>
+<!--navbar-->
+<nav class="navbar navbar-expand-md fw-bold navbar-dark bg-primary">
+    <div class="container-xxl">
+       <a href="#intro" class="navbar-brand">
+            <span class="fw-bold text-success-secondary">
+            NotCredly - The Certificate & Badge Generator 
+            </span> 
+        </a>
+        <!--toggle button for mobile nav--> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
+
+        <!--navbar links-->  
+        <div class="collapse navbar-collapse justify-content-end align-centre" id="main-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sign-Up">Sign up</a>
+                </li>
+                 <li class="nav-item d-md-none">
+                    <a class="nav-link" href="#contactUs">Contact</a>
+                </li>
+                <li class="nav-item ms-2 d-none d-md-inline">
+                    <a class="btn btn-secondary" href="#contactUs">Get in touch</a>
+                </li>
+            </ul>
+        </div>    
+</nav>
+
+{% for message in messages %}
+<div class="alert alert- {{ message.tags }} alert-dismissible fade show" role="alert">
+<strong>Message:</strong>{{ message }}
+<button type = "button" class = "close" data-dismiss = "alert" aria-label = "close">
+<span aria-hidden ="true">&times;</span>
+</button> 
+</div>    
+{% endfor %}
+
+
+<!--main image & intro text-->
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-start">
+                <img class="img-fluid" src="/static/NotCredly-logo.png" alt="NotCredly-logo">
+                
+                <h3>
+                    <div class="display-2 text-success">Language of Certificate, Skills and Badges</div> 
+                </h3>    
+                <p class="display-7 text-muted">Issue digital badges, certificates and insights about your workforce on digital credential network.Digital credentials translate into career success for driving demand and revenue for your career development programs.
+                </p> 
+
+                <p class="display-7 text-muted">The top training brands, certification providers, higher education institutions and employers choose NotCredly as their digital credential network. Certificates and Badges attract, engage, and retain talent effectively with verified digital credentials. It makes data-driven human capital decisions using trusted credentials and skills.
+                </p>  
+
+                <p class="display-7 text-muted">It also brings values to the members with credentials connected to relevant career opportunities. Certificates save time and money switching from paper certificates to digital badges.
+                </p> 
+            </div>
+
+            <div class="col-md-5 text-center d-none d-md-block">
+                <img class="img-fluid" src="/static/certificate-maker.png" alt="certificate-maker">
+            </div>   
+        </div>     
+    </div>    
+</section>
+
+<!--Trusted by section-->
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-5 text-center text-md-start">
+            <h6>
+                <div class="display-5 text-success"> NotCredly is trusted by </div>
+                    <div class="c-icon-box__icon-2 client-logos">
+                        <img src="/static/logos.png" alt="logos_accredited"> 
+                        <div class="c-spacer c-spacer--small"></div>
+                    </div>    
+                </div>
+            </h6>
+        </div>
+    </div>
+</div>           
+
+<!--contact form-->
+<section id="contactUs"> 
+    <div class="container-lg">
+        <div class="text-center">
+            <h4>Get in touch</h4>
+                <p class="lead"> Questions to ask? Fill out the form to contact us directly...</p>
+        </div>
+
+        <div class="row justify-content-center my-5">
+
+            <div class="col-lg-6">
+                <form>
+                    <label for="email" class="form-label">Email address:</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                            </svg>
+                        </span>        
+                        <input type="email" class="form-control" id="email" name="email" placeholder="e.g. abc@example.com">
+                    </div>
+
+
+                    <label for="name" class="form-label">Name:</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </span>    
+                        <input type="name" class="form-control" id="name" name="Uname" placeholder="e.g. abc">
+                    </div>
+
+
+                    <label for="subject" class="form-label">What is your question about?</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            </svg>
+                        </span>   
+                        <select class="form-select" id="subject" name="subject">
+                     
+                            <option value="pricing query" selected >Pricing query</option>
+                            <option value="content query">Content query</option>
+                            <option value="other query">Other query</option>
+                        </select>
+                    </div>
+                    
+
+                     <div class="form-floating mb-4 mt-5">
+                     <textarea id="query" name="query" class="form-control"  style="height:140px"></textarea>
+                     <label for="query">Your query...(use maximum 50 words)</label>
+                     </div>
+
+                     <div class="text-center mt-3">
+                     <button type="submit" class="btn btn-secondary bg-success">Submit</button>
+
+                </form>
+            </div>
+        </div> 
+    </div>    
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+
+</body>
+
+</html>
