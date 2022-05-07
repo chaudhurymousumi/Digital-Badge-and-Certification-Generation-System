@@ -1,0 +1,155 @@
+<!--Mousumi-->
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="NotCredly">
+    <title>NotCredly - Login </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        section{
+          padding: 60px 0; 
+        }
+    </style>
+</head>
+
+<body>
+<!--navbar-->
+<nav class="navbar navbar-expand-md fw-bold navbar-dark bg-primary">
+    <div class="container-xxl">
+       <a href="#intro" class="navbar-brand">
+            <span class="fw-bold text-sucess-secondary">
+            NotCredly - The Certificate & Badge Generator 
+            </span> 
+        </a>
+        <!--toggle button for mobile nav--> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
+
+        <!--navbar links-->  
+        <div class="collapse navbar-collapse justify-content-end align-centre" id="main-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sign-Up">Signup</a>
+                </li>
+            </ul> 
+        </div>    
+</nav>
+
+{% for message in messages %}
+<div class="alert alert- {{ message.tags }} alert-dismissible fade show" role="alert">
+<strong>Message:</strong>{{ message }}
+<button type = "button" class = "close" data-dismiss = "alert" aria-label = "Close">
+<span aria-hidden ="true">&times;</span>
+</button> 
+</div>    
+{% endfor %}
+
+
+<!--main image & intro text-->
+<section id="intro">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-start">
+
+                <img class="img-fluid" src="/static/NotCredly-logo.png" alt="NotCredly-logo">
+
+                <h3>
+                    <div class="display-7">Respected Brands. Resume-worthy Achievements.</div> 
+                </h3>    
+                <p class="display-9 text-muted">NotCredly is used by individuals and organizations for veriying achievements to unlock opportunities. 
+                </p> 
+
+                <img class="img-fluid" src="/static/certificate-maker.png" alt="certificate-maker">
+
+            </div>
+            <div class="col-md-4">
+                <form method="post">
+                {% csrf_token %}
+                    <label for="username" class="form-label fw-bold">Organisation Sign in</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </span>    
+                        <input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+                    </div>
+
+                    <div class="input-group mb-4"> 
+                        <label for="password" > </label>
+                        <input type="password" class="form-control" id="InputPassword1" name="password" placeholder="Password">
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheck1">
+                        <label class="form-check-label" for="flexCheck1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="mb-4 text-center">
+                    <button type="submit" class="btn btn-secondary bg-success">Sign in</button>
+
+                </form> 
+
+                <a href="/Reset-Change-Password" class="d-block mt-3">Reset or Change Password</a>
+
+            </div>
+
+
+
+            <div class="col-md-12">    
+                 <form method="post">
+                {% csrf_token %}
+                    <label for="ousername" class="form-label fw-bold">User Sign in</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </span> 
+                        </span>        
+                        <input type="text" class="form-control" id="ousername" name="ousername" placeholder="User Name">
+                    </div>
+
+
+                    <div class="input-group mb-4">
+                        <label for="password" > </label>
+                        <input type="password" class="form-control" id="InputPassword2" name="opassword" placeholder="Password">
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
+                        <label class="form-check-label" for="flexCheck2">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="mb-4 text-center">
+                        <button type="submit" class="btn btn-secondary bg-success">Sign in</button>
+                    </div> 
+
+                </form>  
+                
+                <div class="mb-4 text-center">
+                    <a href="/Reset-Change-Password" class="d-block mt-3">Reset or Change Password</a>  
+                </div>
+            </div>
+        </div>     
+    </div>    
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+
+</body>
+
+</html>
